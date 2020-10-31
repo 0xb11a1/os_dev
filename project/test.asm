@@ -33,6 +33,7 @@ jmp $ ; endless loop
 
 [bits 32]
 BEGIN_PM:
+; NOTE: this works 
 mov edx, 0xb8000
 mov [edx], byte 'A'
 
@@ -47,12 +48,12 @@ dw 0xaa55
 
 kernal_start:
 [bits 32]
-
+; NOTE: this works 
 mov edx, 0xb8002
 mov [edx], byte 'A'
-
+; NOTE : this does not works - and it stops the above code from working ! 
 msg_test:
-db 'HEL',0
+db 'HELLO',0
 
 
 mov esi, msg_test
@@ -62,30 +63,45 @@ call print_string_pm
 
 jmp $
 
-VID equ 0xb8000
-WB equ 0x0f 
 
-print_string_pm:
-    pusha 
-    mov edx, VID
 
-print_string_pm_loop:
-    mov al, [esi]
-    mov ah, WB
-    
-    cmp al,0
-    je print_string_pm_done
+call_string_pm:
+    mov ebx, 0xb8000  
+    _call_string_pm_loop:
+        mov eax, byte  [esi]
+        mov [ebx], byte eax 
 
-    mov [edx], ax 
-
-    add esi, 1 
-    add edx, 2 
-
-    jmp print_string_pm_loop
-
-print_string_pm_done:
-    popa 
+        add esi, 1
+        add ebx, 2 
+        cmp eax, 0x00
+        jne _call_string_pm_loop
     ret 
+
+
+; VID equ 0xb8000
+; WB equ 0x0f 
+
+; print_string_pm:
+;     pusha 
+;     mov edx, VID
+
+; print_string_pm_loop:
+;     mov al, [esi]
+;     mov ah, WB
+    
+;     cmp al,0
+;     je print_string_pm_done
+
+;     mov [edx], ax 
+
+;     add esi, 1 
+;     add edx, 2 
+
+;     jmp print_string_pm_loop
+
+; print_string_pm_done:
+;     popa 
+;     ret 
 
 
 
