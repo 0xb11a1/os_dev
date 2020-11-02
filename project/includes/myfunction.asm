@@ -7,7 +7,7 @@ push es
 
 ; setting the variables 
   mov ah, 0x02 ; read sector from drive 
-  mov al, 2 ; nums of sector to read 
+  mov al, 4 ; nums of sector to read 
   mov ch, 0 ; select first cylinder/tracks 
   mov cl, 2 ; select the 2nd sector 
   mov dh, 0 ; select first read/write header 
