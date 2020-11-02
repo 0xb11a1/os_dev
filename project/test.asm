@@ -48,34 +48,42 @@ dw 0xaa55
 
 kernal_start:
 [bits 32]
+; mov edx, 0xb8000
+; mov [edx], byte '_'
+; mov edx, 0xb8002
+; mov [edx], byte '_'
+
+
 ; NOTE: this works 
-mov edx, 0xb8002
-mov [edx], byte 'A'
-; NOTE : this does not works - and it stops the above code from working ! 
-msg_test:
-db 'HELLO',0
+; mov edx, 0xb8002
+; mov [edx], byte '?'
 
 
-mov esi, msg_test
-; call print_new
-call print_string_pm
+; ; NOTE : this does not works - and it stops the above code from working ! 
+; msg_test:
+; db 'HELLO',0
 
 
-jmp $
+; mov esi, msg_test
+; ; call print_new
+; call print_string_pm
+
+
+; jmp $
 
 
 
-call_string_pm:
-    mov ebx, 0xb8000  
-    _call_string_pm_loop:
-        mov eax, byte  [esi]
-        mov [ebx], byte eax 
+; call_string_pm:
+;     mov ebx, 0xb8000  
+;     _call_string_pm_loop:
+;         mov eax, byte  [esi]
+;         mov [ebx], byte eax 
 
-        add esi, 1
-        add ebx, 2 
-        cmp eax, 0x00
-        jne _call_string_pm_loop
-    ret 
+;         add esi, 1
+;         add ebx, 2 
+;         cmp eax, 0x00
+;         jne _call_string_pm_loop
+;     ret 
 
 
 ; VID equ 0xb8000
@@ -131,7 +139,7 @@ call_string_pm:
 
 
 
-jmp $
-[bits 16]
-times (512*2)-($-$$) db 0 
+; jmp $
+; [bits 16]
+; times (512*2)-($-$$) db 0 
 
