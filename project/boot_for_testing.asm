@@ -34,8 +34,10 @@ jmp $ ; endless loop
 [bits 32]
 BEGIN_PM:
 ; NOTE: this works 
+; mov eax, 0x00
 mov edx, 0xb8001
 mov [edx], byte 0x60
+
 
 
 ; jmp kernal_start
