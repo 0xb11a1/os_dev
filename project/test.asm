@@ -37,9 +37,9 @@ BEGIN_PM:
 mov edx, 0xb8000
 mov [edx], byte 'A'
 
+; jmp $
 jmp kernal_start
 
-jmp $
 ; Data
 [bits 16]
 ; padding --> for booting only 
