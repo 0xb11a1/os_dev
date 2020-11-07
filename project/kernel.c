@@ -84,10 +84,6 @@ void print_art(char *art){
 // kernal main function
 void kmain(){
 
-
-
-
-
     // animated acsii-art just 4 frame due to memory restriction 
     while(1){
 
@@ -179,22 +175,6 @@ void kmain(){
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // show how many color are available 
     // int *base_video = (int *) 0xb8001;
     // int i = (int) 0x00;
@@ -224,10 +204,11 @@ void kmain(){
     //     cls();
     // }
 
-    
-    
-    
-    
+
+
+
+
+
     
     
     // print msg 
