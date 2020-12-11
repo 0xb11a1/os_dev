@@ -53,6 +53,7 @@ print:
 
 PRINT_STRING:
   ; print the value of `si`
+  pusha
   push ax
   push si
   _loop:
@@ -69,6 +70,7 @@ PRINT_STRING:
   _end
   pop si
   pop ax 
+  popa
   ret
 
 
